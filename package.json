@@ -1,0 +1,17 @@
+{
+  "name": "ar-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "dependencies": {
+    "aframe-watcher": "^1.4.0",
+    "gh-pages": "^3.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "deploy":"gh-pages -d build",
+    "test": "mocha"
+  },
+  "author": "kyle",
+  "license": "ISC"
+}
