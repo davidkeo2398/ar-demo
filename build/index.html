@@ -7,16 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AR with A-Frame.js</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script>
+        var sceneEl = document.querySelector('a-scene');
+        AFRAME.registerComponent('play', {
+            init: function () {
+                var myVideo = document.querySelector('#video');
+                var btnPlay = document.querySelector('#playing');
+                console.log(this.el);
+                console.log(btnPlay);
+                btnPlay.addEventListener('click', function () {
+                    if (myVideo.paused) {
+                        myVideo.play();
+                        console.log('hello')
+                    } else {
+                        myVideo.pause();
+                    }
+                });
+            }
+        });
+    </script>
 </head>
 
 <body>
     <a-scene>
-        <a-box position="-0.2544 0.5 -3" rotation="0 45 0" color="#4CC3D9" material="" geometry=""></a-box>
-        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+        <a-assets>
+            <video controls id="video" loop="true" src="assets/videos/video1.mp4" webkit-playsinline></video>
+        </a-assets>
+
+        <a-video src="#video" width="16" height="9" position="0 4.5 -10">
+            <a-plane id="playing" color="#333333" width="2" height="1" position="-7 6 0" play>
+                <a-text text="align:center" color="white" value="Play"></a-text>
+            </a-plane>
+        </a-video>
         <a-sky color="#ECECEC"></a-sky>
+
     </a-scene>
+
 </body>
 
 </html>
